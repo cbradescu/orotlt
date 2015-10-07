@@ -1,0 +1,12 @@
+{% extends 'OroUIBundle:actions:index.html.twig' %}
+{% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
+{% set pageTitle = 'tlt.organizationunit.generallocation.entity_plural_label'|trans %}
+{% set gridName = 'general_location-grid' %}
+{% block navButtons %}
+    {% if true or resource_granted('tlt_organization_unit_general_location_create') %}
+        {{ UI.addButton({
+            'path' : path('tlt_organization_unit_general_location_create'),
+            'entity_label': 'tlt.organizationunit.generallocation.entity_label'|trans
+        }) }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+tlt_organization_unit:
+    resource: "@TltOrganizationUnitBundle/Controller/"
+    type:     annotation
+    prefix:   /tlt_organization_unit
+
+tlt_organization_unit_bundle_api:
+    resource: "@TltOrganizationUnitBundle/Resources/config/oro/routing_api.yml"
+    type: rest
+    prefix: api/rest/{version}
+    requirements:
+        version:  latest|v1
+    defaults:
+        version:  latest

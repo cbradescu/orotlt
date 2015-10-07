@@ -1,0 +1,462 @@
+datagrid:
+    base-service_type-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_service_type_view
+            query:
+                select:
+                    - service_type.id
+                    - service_type.name
+                from:
+                    - 
+                        table: "%tlt_organization_unit_service_type.entity.class%"
+                        alias: service_type
+        columns:
+            name:
+                label: tlt.organizationunit.servicetype.name.label
+        sorters:
+            columns:
+                name:
+                    data_name: service_type.name
+            default: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_service_type_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_service_type_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_service_type_api_delete_service_type
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_service_type_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_service_type_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_service_type_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    service_type-grid:
+        extends: base-service_type-grid
+        filters:
+            columns: ~
+    base-service-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_service_view
+            query:
+                select:
+                    - service.id
+                    - service_type.name as serviceType
+                    - service.name
+                from:
+                    - 
+                        table: "%tlt_organization_unit_service.entity.class%"
+                        alias: service
+                join:
+                    left:
+                        - 
+                            join: service.serviceType
+                            alias: service_type
+        columns:
+            serviceType:
+                label: tlt.organizationunit.service.service_type.label
+            name:
+                label: tlt.organizationunit.service.name.label
+        sorters:
+            columns:
+                serviceType:
+                    data_name: service_type.name
+                name:
+                    data_name: service.name
+        filters:
+            columns:
+                serviceType:
+                    type: entity
+                    data_name: service.serviceType
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_service_type.entity.class%"
+                    enabled: true
+                name:
+                    type: string
+                    data_name: service.name
+                    enabled: true
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_service_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_service_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_service_api_delete_service
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_service_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_service_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_service_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    service-grid:
+        extends: base-service-grid
+    base-tel_entity-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_tel_entity_view
+            query:
+                select:
+                    - telEntity.id
+                    - telEntity.name
+                from:
+                    - 
+                        table: "%tlt_organization_unit_tel_entity.entity.class%"
+                        alias: telEntity
+        columns:
+            name:
+                label: tlt.organizationunit.telentity.name.label
+        sorters:
+            columns:
+                name:
+                    data_name: telEntity.name
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_tel_entity_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_tel_entity_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_tel_entity_api_delete_tel_entity
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_tel_entity_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_tel_entity_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_tel_entity_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    tel_entity-grid:
+        extends: base-tel_entity-grid
+        filters:
+            columns: ~
+    base-tlt_entity-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_tlt_entity_view
+            query:
+                select:
+                    - tltEntity.id
+                    - tltEntity.name
+                from:
+                    - 
+                        table: "%tlt_organization_unit_tlt_entity.entity.class%"
+                        alias: tltEntity
+        columns:
+            name:
+                label: tlt.organizationunit.tltentity.name.label
+        sorters:
+            columns:
+                name:
+                    data_name: tltEntity.name
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_tlt_entity_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_tlt_entity_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_tlt_entity_api_delete_tlt_entity
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_tlt_entity_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_tlt_entity_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_tlt_entity_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    tlt_entity-grid:
+        extends: base-tlt_entity-grid
+        filters:
+            columns: ~
+    base-general_location-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_general_location_view
+            query:
+                select:
+                    - generalLocation.id
+                    - generalLocation.name
+                from:
+                    - 
+                        table: "%tlt_organization_unit_general_location.entity.class%"
+                        alias: generalLocation
+        columns:
+            name:
+                label: tlt.organizationunit.servicetype.name.label
+        sorters:
+            columns:
+                name:
+                    data_name: generalLocation.name
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_general_location_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_general_location_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_general_location_api_delete_general_location
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_general_location_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_general_location_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_general_location_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    general_location-grid:
+        extends: base-general_location-grid
+        filters:
+            columns: ~
+    base-tlt_location-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_tlt_location_view
+            query:
+                select:
+                    - tltLocation.id
+                    - tlt_entity.name as tltEntity
+                    - general_location.name as generalLocation
+                from:
+                    - 
+                        table: "%tlt_organization_unit_tlt_location.entity.class%"
+                        alias: tltLocation
+                join:
+                    left:
+                        - 
+                            join: tltLocation.tltEntity
+                            alias: tlt_entity
+                        - 
+                            join: tltLocation.generalLocation
+                            alias: general_location
+        columns:
+            tltEntity:
+                label: tlt.organizationunit.tltlocation.tlt_entity.label
+            generalLocation:
+                label: tlt.organizationunit.tltlocation.general_location.label
+        sorters:
+            columns: ~
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_tlt_location_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_tlt_location_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_tlt_location_api_delete_tlt_location
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_tlt_location_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_tlt_location_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_tlt_location_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    tlt_location-grid:
+        extends: base-tlt_location-grid
+        filters:
+            columns: ~
+    base-announcer-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_announcer_view
+            query:
+                select:
+                    - announcer.id
+                from:
+                    - 
+                        table: "%tlt_organization_unit_announcer.entity.class%"
+                        alias: announcer
+        columns: ~
+        sorters:
+            columns: ~
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_announcer_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_announcer_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_announcer_api_delete_announcer
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_announcer_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_announcer_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_announcer_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    announcer-grid:
+        extends: base-announcer-grid
+        filters:
+            columns: ~

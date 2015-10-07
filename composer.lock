@@ -3972,13 +3972,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/orocrm/platform.git",
-                "reference": "ae09ef7175a0febc079b33d7a0b4d2ceab7cbc91"
+                "url": "git@github.com:orocrm/platform.git",
+                "reference": "0ae91a71ab138fbc9f4dd99b48bd523487504145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orocrm/platform/zipball/ae09ef7175a0febc079b33d7a0b4d2ceab7cbc91",
-                "reference": "ae09ef7175a0febc079b33d7a0b4d2ceab7cbc91",
+                "url": "https://api.github.com/repos/orocrm/platform/zipball/0ae91a71ab138fbc9f4dd99b48bd523487504145",
+                "reference": "0ae91a71ab138fbc9f4dd99b48bd523487504145",
                 "shasum": ""
             },
             "require": {
@@ -4071,7 +4071,7 @@
             ],
             "description": "Business Application Platform (BAP)",
             "homepage": "https://github.com/orocrm/platform.git",
-            "time": "2015-09-30 06:31:24"
+            "time": "2015-10-01 16:48:38"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -6005,7 +6005,56 @@
             "time": "2013-04-17 13:32:54"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+        {
+            "name": "sensio/generator-bundle",
+            "version": "v2.5.3",
+            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/e50108c2133ee5c9c484555faed50c17a61221d3",
+                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.5",
+                "symfony/framework-bundle": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "twig/twig": "~1.11"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\GeneratorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "This bundle generates code for you",
+            "time": "2015-03-17 06:36:52"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {

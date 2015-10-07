@@ -1,0 +1,21 @@
+tlt_organization_unit_service_type_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/ServiceTypeController.php"
+    type: rest
+tlt_organization_unit_service_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/ServiceController.php"
+    type: rest
+tlt_organization_unit_tel_entity_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/TELEntityController.php"
+    type: rest
+tlt_organization_unit_tlt_entity_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/TLTEntityController.php"
+    type: rest
+tlt_organization_unit_general_location_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/GeneralLocationController.php"
+    type: rest
+tlt_organization_unit_tlt_location_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/TLTLocationController.php"
+    type: rest
+tlt_organization_unit_announcer_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/AnnouncerController.php"
+    type: rest

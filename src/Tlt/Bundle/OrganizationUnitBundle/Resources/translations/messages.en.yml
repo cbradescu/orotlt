@@ -1,0 +1,100 @@
+tlt:
+    organizationunit:
+        menu:
+            tab.label: Organization Units
+        servicetype:
+            entity_label: Service Type
+            entity_plural_label: Service Types
+            entity_description: Represent Service Types
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            menu:
+                index.label: Service Types
+        service:
+            entity_label: Service
+            entity_plural_label: Services
+            entity_description: Represent Services
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            service_type.label: Service Type
+            menu:
+                index.label: Services
+            form:
+                choose_service_type: Choose a Service Type
+        telentity:
+            entity_label: Entity
+            entity_plural_label: Entities
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            menu:
+                index.label: Entities
+        tltentity:
+            entity_label: Agency/Center
+            entity_plural_label: Agencies/Centers
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            menu:
+                index.label: TLT Agencies/Centers
+        generallocation:
+            entity_label: General Location
+            entity_plural_label: General Locations
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            menu:
+                index.label: General Locations
+        tltlocation:
+            entity_label: Location in TLT Agency/Center
+            entity_plural_label: Locations in TLT Agency/Center
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            tlt_entity.label: Agency/Center
+            general_location.label: General Location
+            menu:
+                index.label: Locations in TLT Agency/Center
+            form:
+                choose_tlt_entity: Choose a TLT Agency/Center
+                choose_general_location: Choose a General Location
+        announcer:
+            entity_label: Announcer
+            entity_plural_label: Announcers
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            organization.label: Organization
+            enabled.label: Status
+            firstname.label: Firstname
+            lastname.label: Lastname
+            compartment.label: Compartment
+            tlt_entity.label: TLT Agency/Center
+            enabled.label:     Status
+            menu:
+                index.label: Announcers
+            form:
+                choose_tlt_entity: Choose a TLT Agency/Center
+tlt_organization_unit:
+    service_type:
+        message:
+            saved: Service Type saved
+    service:
+        message.saved: Service saved
+    tel_entity:
+        message.saved: Entity saved
+    tlt_entity:
+        message.saved: Agency/Center saved
+    general_location:
+        message.saved: General Location saved
+    tlt_location:
+        message.saved: Location in TLT Agency/Center saved
+    announcer:
+        message.saved: Announcer saved

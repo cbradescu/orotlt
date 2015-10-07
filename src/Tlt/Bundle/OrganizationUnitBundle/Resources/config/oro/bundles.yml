@@ -1,0 +1,2 @@
+bundles:
+    - { name: Tlt\Bundle\OrganizationUnitBundle\TltOrganizationUnitBundle, priority: 100 }

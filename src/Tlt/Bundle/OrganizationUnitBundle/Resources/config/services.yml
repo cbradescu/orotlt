@@ -1,0 +1,107 @@
+services:
+    tlt_organization_unit_service_type.manager:
+        class: "%tlt_organization_unit_service_type.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_service_type.manager.api:
+        class: "%tlt_organization_unit_service_type.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_service_type.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_service_type.manager"
+    tlt_organization_unit_service.manager:
+        class: "%tlt_organization_unit_service.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_service.manager.api:
+        class: "%tlt_organization_unit_service.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_service.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_service.manager"
+    tlt_organization_unit_tel_entity.manager:
+        class: "%tlt_organization_unit_tel_entity.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_tel_entity.manager.api:
+        class: "%tlt_organization_unit_tel_entity.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_tel_entity.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_tel_entity.manager"
+    tlt_organization_unit_tlt_entity.manager:
+        class: "%tlt_organization_unit_tlt_entity.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_tlt_entity.manager.api:
+        class: "%tlt_organization_unit_tlt_entity.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_tlt_entity.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_tlt_entity.manager"
+    tlt_organization_unit_general_location.manager:
+        class: "%tlt_organization_unit_general_location.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_general_location.manager.api:
+        class: "%tlt_organization_unit_general_location.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_general_location.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_general_location.manager"
+    tlt_organization_unit_tlt_location.manager:
+        class: "%tlt_organization_unit_tlt_location.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_tlt_location.manager.api:
+        class: "%tlt_organization_unit_tlt_location.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_tlt_location.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_tlt_location.manager"
+    tlt_organization_unit_announcer.manager:
+        class: "%tlt_organization_unit_announcer.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_announcer.manager.api:
+        class: "%tlt_organization_unit_announcer.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_announcer.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_announcer.manager"
+parameters:
+    tlt_organization_unit_service_type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\ServiceType"
+    tlt_organization_unit_service_type.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceTypeManager"
+    tlt_organization_unit_service_type.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceTypeApiManager"
+    tlt_organization_unit_service.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\Service"
+    tlt_organization_unit_service.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceManager"
+    tlt_organization_unit_service.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceApiManager"
+    tlt_organization_unit_tel_entity.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\TELEntity"
+    tlt_organization_unit_tel_entity.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\TELEntityManager"
+    tlt_organization_unit_tel_entity.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\TELEntityApiManager"
+    tlt_organization_unit_tlt_entity.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\TLTEntity"
+    tlt_organization_unit_tlt_entity.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\TLTEntityManager"
+    tlt_organization_unit_tlt_entity.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\TLTEntityApiManager"
+    tlt_organization_unit_general_location.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\GeneralLocation"
+    tlt_organization_unit_general_location.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\GeneralLocationManager"
+    tlt_organization_unit_general_location.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\GeneralLocationApiManager"
+    tlt_organization_unit_tlt_location.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\TLTLocation"
+    tlt_organization_unit_tlt_location.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\TLTLocationManager"
+    tlt_organization_unit_tlt_location.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\TLTLocationApiManager"
+    tlt_organization_unit_announcer.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\Announcer"
+    tlt_organization_unit_announcer.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\AnnouncerManager"
+    tlt_organization_unit_announcer.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\AnnouncerApiManager"

@@ -1,0 +1,6 @@
+Tlt\Bundle\OrganizationUnitBundle\Entity\Service:
+    properties:
+        serviceType:
+            - NotBlank: ~
+        name:
+            - NotBlank: ~

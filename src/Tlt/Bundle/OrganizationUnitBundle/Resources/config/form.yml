@@ -1,0 +1,338 @@
+parameters:
+    tlt_organization_unit_service_type.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\ServiceTypeType"
+    tlt_organization_unit_service_type.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\ServiceTypeApiType"
+    tlt_organization_unit_service_type.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\ServiceTypeHandler"
+    tlt_organization_unit_service.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\ServiceType"
+    tlt_organization_unit_service.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\ServiceApiType"
+    tlt_organization_unit_service.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\ServiceHandler"
+    tlt_organization_unit_tel_entity.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\TELEntityType"
+    tlt_organization_unit_tel_entity.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\TELEntityApiType"
+    tlt_organization_unit_tel_entity.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\TELEntityHandler"
+    tlt_organization_unit_tlt_entity.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\TLTEntityType"
+    tlt_organization_unit_tlt_entity.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\TLTEntityApiType"
+    tlt_organization_unit_tlt_entity.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\TLTEntityHandler"
+    tlt_organization_unit_general_location.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\GeneralLocationType"
+    tlt_organization_unit_general_location.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\GeneralLocationApiType"
+    tlt_organization_unit_general_location.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\GeneralLocationHandler"
+    tlt_organization_unit_tlt_location.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\TLTLocationType"
+    tlt_organization_unit_tlt_location.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\TLTLocationApiType"
+    tlt_organization_unit_tlt_location.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\TLTLocationHandler"
+    tlt_organization_unit_announcer.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\AnnouncerType"
+    tlt_organization_unit_announcer.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\AnnouncerApiType"
+    tlt_organization_unit_announcer.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\AnnouncerHandler"
+services:
+    tlt_organization_unit_service_type.form.type.entity:
+        class: "%tlt_organization_unit_service_type.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_service_type
+    tlt_organization_unit_service_type.form.handler.entity:
+        class: "%tlt_organization_unit_service_type.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_service_type.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_service_type.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_service_type_form
+            - tlt_organization_unit_service_type
+    tlt_organization_unit_service_type.form.type.entity.api:
+        class: "%tlt_organization_unit_service_type.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_service_type_api
+    tlt_organization_unit_service_type.form.handler.entity.api:
+        class: "%tlt_organization_unit_service_type.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_service_type.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_service_type.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - service_type
+            - tlt_organization_unit_service_type_api
+    tlt_organization_unit_service.form.type.entity:
+        class: "%tlt_organization_unit_service.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_service
+    tlt_organization_unit_service.form.handler.entity:
+        class: "%tlt_organization_unit_service.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_service.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_service.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_service_form
+            - tlt_organization_unit_service
+    tlt_organization_unit_service.form.type.entity.api:
+        class: "%tlt_organization_unit_service.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_service_api
+    tlt_organization_unit_service.form.handler.entity.api:
+        class: "%tlt_organization_unit_service.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_service.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_service.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - service
+            - tlt_organization_unit_service_api
+    tlt_organization_unit_tel_entity.form.type.entity:
+        class: "%tlt_organization_unit_tel_entity.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_tel_entity
+    tlt_organization_unit_tel_entity.form.handler.entity:
+        class: "%tlt_organization_unit_tel_entity.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_tel_entity.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_tel_entity.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_tel_entity_form
+            - tlt_organization_unit_tel_entity
+    tlt_organization_unit_tel_entity.form.type.entity.api:
+        class: "%tlt_organization_unit_tel_entity.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_tel_entity_api
+    tlt_organization_unit_tel_entity.form.handler.entity.api:
+        class: "%tlt_organization_unit_tel_entity.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_tel_entity.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_tel_entity.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tel_entity
+            - tlt_organization_unit_tel_entity_api
+    tlt_organization_unit_tlt_entity.form.type.entity:
+        class: "%tlt_organization_unit_tlt_entity.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_tlt_entity
+    tlt_organization_unit_tlt_entity.form.handler.entity:
+        class: "%tlt_organization_unit_tlt_entity.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_tlt_entity.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_tlt_entity.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_tlt_entity_form
+            - tlt_organization_unit_tlt_entity
+    tlt_organization_unit_tlt_entity.form.type.entity.api:
+        class: "%tlt_organization_unit_tlt_entity.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_tlt_entity_api
+    tlt_organization_unit_tlt_entity.form.handler.entity.api:
+        class: "%tlt_organization_unit_tlt_entity.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_tlt_entity.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_tlt_entity.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_entity
+            - tlt_organization_unit_tlt_entity_api
+    tlt_organization_unit_general_location.form.type.entity:
+        class: "%tlt_organization_unit_general_location.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_general_location
+    tlt_organization_unit_general_location.form.handler.entity:
+        class: "%tlt_organization_unit_general_location.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_general_location.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_general_location.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_general_location_form
+            - tlt_organization_unit_general_location
+    tlt_organization_unit_general_location.form.type.entity.api:
+        class: "%tlt_organization_unit_general_location.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_general_location_api
+    tlt_organization_unit_general_location.form.handler.entity.api:
+        class: "%tlt_organization_unit_general_location.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_general_location.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_general_location.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - general_location
+            - tlt_organization_unit_general_location_api
+    tlt_organization_unit_tlt_location.form.type.entity:
+        class: "%tlt_organization_unit_tlt_location.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_tlt_location
+    tlt_organization_unit_tlt_location.form.handler.entity:
+        class: "%tlt_organization_unit_tlt_location.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_tlt_location.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_tlt_location.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_tlt_location_form
+            - tlt_organization_unit_tlt_location
+    tlt_organization_unit_tlt_location.form.type.entity.api:
+        class: "%tlt_organization_unit_tlt_location.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_tlt_location_api
+    tlt_organization_unit_tlt_location.form.handler.entity.api:
+        class: "%tlt_organization_unit_tlt_location.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_tlt_location.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_tlt_location.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_location
+            - tlt_organization_unit_tlt_location_api
+    tlt_organization_unit_announcer.form.type.entity:
+        class: "%tlt_organization_unit_announcer.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_announcer
+    tlt_organization_unit_announcer.form.handler.entity:
+        class: "%tlt_organization_unit_announcer.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_announcer.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_announcer.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_announcer_form
+            - tlt_organization_unit_announcer
+    tlt_organization_unit_announcer.form.type.entity.api:
+        class: "%tlt_organization_unit_announcer.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_announcer_api
+    tlt_organization_unit_announcer.form.handler.entity.api:
+        class: "%tlt_organization_unit_announcer.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_announcer.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_announcer.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - announcer
+            - tlt_organization_unit_announcer_api

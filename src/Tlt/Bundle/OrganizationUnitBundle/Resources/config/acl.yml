@@ -1,0 +1,168 @@
+tlt_organization_unit_service_type_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:ServiceType"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_type_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:ServiceType"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_type_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:ServiceType"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_type_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:ServiceType"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:Service"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:Service"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:Service"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_service_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:Service"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tel_entity_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:TELEntity"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tel_entity_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:TELEntity"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tel_entity_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:TELEntity"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tel_entity_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:TELEntity"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_entity_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTEntity"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_entity_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTEntity"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_entity_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTEntity"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_entity_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTEntity"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_general_location_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:GeneralLocation"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_general_location_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:GeneralLocation"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_general_location_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:GeneralLocation"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_general_location_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:GeneralLocation"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_location_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTLocation"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_location_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTLocation"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_location_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTLocation"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_tlt_location_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:TLTLocation"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_announcer_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:Announcer"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_announcer_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:Announcer"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_announcer_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:Announcer"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_announcer_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:Announcer"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
