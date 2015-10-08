@@ -12,6 +12,9 @@ oro_menu_config:
         tlt_organization_unit_service_index:
             label: tlt.organizationunit.service.menu.index.label
             route: tlt_organization_unit_service_index
+        tlt_organization_unit_system_index:
+            label: tlt.organizationunit.system.menu.index.label
+            route: tlt_organization_unit_system_index
         tlt_organization_unit_tel_entity_index:
             label: tlt.organizationunit.telentity.menu.index.label
             route: tlt_organization_unit_tel_entity_index
@@ -27,6 +30,9 @@ oro_menu_config:
         tlt_organization_unit_announcer_index:
             label: tlt.organizationunit.announcer.menu.index.label
             route: tlt_organization_unit_announcer_index
+        tlt_organization_unit_working_schedule_index:
+            label: tlt.organizationunit.workingschedule.menu.index.label
+            route: tlt_organization_unit_working_schedule_index
     tree:
         application_menu:
             children:
@@ -34,8 +40,10 @@ oro_menu_config:
                     children:
                         tlt_organization_unit_service_type_index: ~
                         tlt_organization_unit_service_index: ~
+                        tlt_organization_unit_system_index: ~
                         tlt_organization_unit_tel_entity_index: ~
                         tlt_organization_unit_tlt_entity_index: ~
                         tlt_organization_unit_general_location_index: ~
                         tlt_organization_unit_tlt_location_index: ~
                         tlt_organization_unit_announcer_index: ~
+                        tlt_organization_unit_working_schedule_index: ~

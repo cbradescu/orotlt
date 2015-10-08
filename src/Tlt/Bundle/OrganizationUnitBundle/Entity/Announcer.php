@@ -17,6 +17,7 @@ use Oro\Bundle\OrganizationBundle\Entity\Organization;
 use Oro\Bundle\UserBundle\Entity\User;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\Config;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
+use Oro\Bundle\LocaleBundle\Model\FullNameInterface;
 
 /**
  * @ORM\Entity
@@ -49,7 +50,7 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  * )
  */
 
-class Announcer
+class Announcer implements FullNameInterface
 {
 
     /**
@@ -190,7 +191,7 @@ class Announcer
      */
     public function __toString()
     {
-        return (string)$this->firstName . ' ' . (string)$this->lastName;
+        return $this->firstName . ' ' . $this->lastName;
     }
 
     /**
@@ -395,5 +396,19 @@ class Announcer
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime('now', new \DateTimeZone('UTC'));
+    }
+
+    public function getNamePrefix()
+    {
+        return null;
+    }
+
+    public function getMiddleName()
+    {
+        return null;
+    }
+    public function getNameSuffix()
+    {
+        return null;
     }
 }

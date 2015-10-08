@@ -83,6 +83,30 @@ services:
             - "%tlt_organization_unit_announcer.entity.class%"
             - "@doctrine.orm.entity_manager"
             - "@tlt_organization_unit_announcer.manager"
+    tlt_organization_unit_system.manager:
+        class: "%tlt_organization_unit_system.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_system.manager.api:
+        class: "%tlt_organization_unit_system.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_system.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_system.manager"
+    tlt_organization_unit_working_schedule.manager:
+        class: "%tlt_organization_unit_working_schedule.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_working_schedule.manager.api:
+        class: "%tlt_organization_unit_working_schedule.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_working_schedule.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_working_schedule.manager"
 parameters:
     tlt_organization_unit_service_type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\ServiceType"
     tlt_organization_unit_service_type.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceTypeManager"
@@ -105,3 +129,9 @@ parameters:
     tlt_organization_unit_announcer.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\Announcer"
     tlt_organization_unit_announcer.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\AnnouncerManager"
     tlt_organization_unit_announcer.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\AnnouncerApiManager"
+    tlt_organization_unit_system.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\System"
+    tlt_organization_unit_system.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\SystemManager"
+    tlt_organization_unit_system.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\SystemApiManager"
+    tlt_organization_unit_working_schedule.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\WorkingSchedule"
+    tlt_organization_unit_working_schedule.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\WorkingScheduleManager"
+    tlt_organization_unit_working_schedule.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\WorkingScheduleApiManager"

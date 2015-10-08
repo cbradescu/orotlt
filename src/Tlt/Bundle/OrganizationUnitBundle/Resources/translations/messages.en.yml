@@ -25,6 +25,19 @@ tlt:
                 index.label: Services
             form:
                 choose_service_type: Choose a Service Type
+        system:
+            entity_label: System
+            entity_plural_label: Systems
+            entity_description: Represent Systems
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            service_type.label: Service Type
+            menu:
+                index.label: Systems
+            form:
+                choose_service_type: Choose a Service Type
         telentity:
             entity_label: Entity
             entity_plural_label: Entities
@@ -77,17 +90,26 @@ tlt:
             lastname.label: Lastname
             compartment.label: Compartment
             tlt_entity.label: TLT Agency/Center
-            enabled.label:     Status
             menu:
                 index.label: Announcers
             form:
                 choose_tlt_entity: Choose a TLT Agency/Center
+        workingschedule:
+            entity_label: Working Schedule
+            entity_plural_label: Working Schedules
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            name.label: Name
+            menu:
+                index.label: Working Schedules
 tlt_organization_unit:
     service_type:
-        message:
-            saved: Service Type saved
+        message.saved: Service Type saved
     service:
         message.saved: Service saved
+    system:
+        message.saved: System saved
     tel_entity:
         message.saved: Entity saved
     tlt_entity:
@@ -98,3 +120,6 @@ tlt_organization_unit:
         message.saved: Location in TLT Agency/Center saved
     announcer:
         message.saved: Announcer saved
+    working_schedule:
+        message.saved: WorkingSchedule saved
+

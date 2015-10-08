@@ -49,7 +49,6 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
 
 class TELEntity
 {
-
     /**
      * @var integer
      *

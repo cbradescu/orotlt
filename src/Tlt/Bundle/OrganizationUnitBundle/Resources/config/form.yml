@@ -20,6 +20,12 @@ parameters:
     tlt_organization_unit_announcer.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\AnnouncerType"
     tlt_organization_unit_announcer.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\AnnouncerApiType"
     tlt_organization_unit_announcer.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\AnnouncerHandler"
+    tlt_organization_unit_system.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\SystemType"
+    tlt_organization_unit_system.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\SystemApiType"
+    tlt_organization_unit_system.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\SystemHandler"
+    tlt_organization_unit_working_schedule.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\WorkingScheduleType"
+    tlt_organization_unit_working_schedule.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\WorkingScheduleApiType"
+    tlt_organization_unit_working_schedule.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\WorkingScheduleHandler"
 services:
     tlt_organization_unit_service_type.form.type.entity:
         class: "%tlt_organization_unit_service_type.form.type.entity.class%"
@@ -336,3 +342,93 @@ services:
         arguments:
             - announcer
             - tlt_organization_unit_announcer_api
+    tlt_organization_unit_system.form.type.entity:
+        class: "%tlt_organization_unit_system.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_system
+    tlt_organization_unit_system.form.handler.entity:
+        class: "%tlt_organization_unit_system.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_system.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_system.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_system_form
+            - tlt_organization_unit_system
+    tlt_organization_unit_system.form.type.entity.api:
+        class: "%tlt_organization_unit_system.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_system_api
+    tlt_organization_unit_system.form.handler.entity.api:
+        class: "%tlt_organization_unit_system.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_system.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_system.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - system
+            - tlt_organization_unit_system_api
+    tlt_organization_unit_working_schedule.form.type.entity:
+        class: "%tlt_organization_unit_working_schedule.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_working_schedule
+    tlt_organization_unit_working_schedule.form.handler.entity:
+        class: "%tlt_organization_unit_working_schedule.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_working_schedule.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_working_schedule.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_working_schedule_form
+            - tlt_organization_unit_working_schedule
+    tlt_organization_unit_working_schedule.form.type.entity.api:
+        class: "%tlt_organization_unit_working_schedule.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_working_schedule_api
+    tlt_organization_unit_working_schedule.form.handler.entity.api:
+        class: "%tlt_organization_unit_working_schedule.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_working_schedule.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_working_schedule.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - working_schedule
+            - tlt_organization_unit_working_schedule_api

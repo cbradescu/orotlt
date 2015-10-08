@@ -19,3 +19,9 @@ tlt_organization_unit_tlt_location_api:
 tlt_organization_unit_announcer_api:
     resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/AnnouncerController.php"
     type: rest
+tlt_organization_unit_system_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/SystemController.php"
+    type: rest
+tlt_organization_unit_working_schedule_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/WorkingScheduleController.php"
+    type: rest

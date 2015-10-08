@@ -25,6 +25,11 @@ class TLTEntityController extends Controller
      */
     public function indexAction()
     {
+//        $x = $this->getDoctrine()->getRepository('TltOrganizationUnitBundle:TLTEntity')->findBy(array());
+//        foreach ($x as $i) {
+//            var_dump($i->getName());
+//        }
+
         return array();
     }
 

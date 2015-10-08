@@ -166,3 +166,51 @@ tlt_organization_unit_announcer_delete:
     permission: DELETE
     group_name: ""
     bindings: ~
+tlt_organization_unit_system_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:System"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_system_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:System"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_system_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:System"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_system_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:System"
+    permission: DELETE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_working_schedule_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:WorkingSchedule"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_working_schedule_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:WorkingSchedule"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_working_schedule_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:WorkingSchedule"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_working_schedule_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:WorkingSchedule"
+    permission: DELETE
+    group_name: ""
+    bindings: ~

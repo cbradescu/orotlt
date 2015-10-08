@@ -219,11 +219,6 @@ datagrid:
         columns:
             name:
                 label: tlt.organizationunit.tltentity.name.label
-        sorters:
-            columns:
-                name:
-                    data_name: tltEntity.name
-            default: ~
         filters:
             columns: ~
         properties:
@@ -288,7 +283,11 @@ datagrid:
                     data_name: generalLocation.name
             default: ~
         filters:
-            columns: ~
+            columns:
+                name:
+                    type: string
+                    data_name: generalLocation.name
+                    enabled: true
         properties:
             id: ~
             view_link:
@@ -328,8 +327,6 @@ datagrid:
                 link: delete_link
     general_location-grid:
         extends: base-general_location-grid
-        filters:
-            columns: ~
     base-tlt_location-grid:
         source:
             type: orm
@@ -360,7 +357,21 @@ datagrid:
             columns: ~
             default: ~
         filters:
-            columns: ~
+            columns:
+                tltEntity:
+                    type: entity
+                    data_name: tltLocation.tltEntity
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_tlt_entity.entity.class%"
+                    enabled: true
+                generalLocation:
+                    type: entity
+                    data_name: tltLocation.generalLocation
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_general_location.entity.class%"
+                    enabled: true
         properties:
             id: ~
             view_link:
@@ -400,8 +411,6 @@ datagrid:
                 link: delete_link
     tlt_location-grid:
         extends: base-tlt_location-grid
-        filters:
-            columns: ~
     base-announcer-grid:
         source:
             type: orm
@@ -409,16 +418,60 @@ datagrid:
             query:
                 select:
                     - announcer.id
+                    - announcer.firstName
+                    - announcer.lastName
+                    - announcer.compartment
+                    - announcer.enabled
+                    - tlt_entity.name as tltEntity
                 from:
                     - 
                         table: "%tlt_organization_unit_announcer.entity.class%"
                         alias: announcer
-        columns: ~
+                join:
+                    left:
+                        - 
+                            join: announcer.tltEntity
+                            alias: tlt_entity
+        columns:
+            tltEntity:
+                label: tlt.organizationunit.announcer.tlt_entity.label
+            lastName:
+                label: tlt.organizationunit.announcer.lastname.label
+            firstName:
+                label: tlt.organizationunit.announcer.firstname.label
+            compartment:
+                label: tlt.organizationunit.announcer.compartment.label
+            enabled:
+                label: tlt.organizationunit.announcer.enabled.label
+                frontend_type: select
+                choices:
+                    - Inactive
+                    - Active
         sorters:
-            columns: ~
-            default: ~
+            columns:
+                tltEntity:
+                    data_name: tlt_entity.name
+                lastName:
+                    data_name: announcer.lastName
+                firstName:
+                    data_name: announcer.firstName
+            default:
+                tltEntity: ASC
+                lastName: ASC
+                firstName: ASC
         filters:
-            columns: ~
+            columns:
+                tltEntity:
+                    type: entity
+                    data_name: announcer.tltEntity
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_tlt_entity.entity.class%"
+                    enabled: true
+                compartment:
+                    type: string
+                    data_name: announcer.compartment
+                    enabled: true
         properties:
             id: ~
             view_link:
@@ -458,5 +511,145 @@ datagrid:
                 link: delete_link
     announcer-grid:
         extends: base-announcer-grid
+    base-system-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_system_view
+            query:
+                select:
+                    - system.id
+                    - service_type.name as serviceType
+                    - system.name
+                from:
+                    - 
+                        table: "%tlt_organization_unit_system.entity.class%"
+                        alias: system
+                join:
+                    left:
+                        - 
+                            join: system.serviceType
+                            alias: service_type
+        columns:
+            serviceType:
+                label: tlt.organizationunit.service.service_type.label
+            name:
+                label: tlt.organizationunit.system.name.label
+        sorters:
+            columns:
+                serviceType:
+                    data_name: service_type.name
+                name:
+                    data_name: system.name
+            default:
+                serviceType: ASC
+                name: ASC
+        filters:
+            columns:
+                serviceType:
+                    type: entity
+                    data_name: service.serviceType
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_service_type.entity.class%"
+                    enabled: true
+                name:
+                    type: string
+                    data_name: system.name
+                    enabled: true
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_system_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_system_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_system_api_delete_system
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_system_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_system_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_system_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    system-grid:
+        extends: base-system-grid
+    base-working_schedule-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_working_schedule_view
+            query:
+                select:
+                    - workingSchedule.id
+                from:
+                    - 
+                        table: "%tlt_organization_unit_working_schedule.entity.class%"
+                        alias: workingSchedule
+        columns: ~
+        sorters:
+            columns: ~
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_working_schedule_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_working_schedule_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_working_schedule_api_delete_working_schedule
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_working_schedule_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_working_schedule_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_working_schedule_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    working_schedule-grid:
+        extends: base-working_schedule-grid
         filters:
             columns: ~
