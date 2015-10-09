@@ -1,0 +1,15 @@
+{% import 'OroUIBundle::macros.html.twig' as ui %}
+{% import 'OroTagBundle::macros.html.twig' as tag %}
+{% import 'OroEntityConfigBundle::macros.html.twig' as entityConfig %}
+
+<div class="widget-content">
+    <div class="row-fluid form-horizontal">
+        <div class="responsive-block">
+            {#{{ ui.renderProperty('tlt.organizationunit.workingschedule.name.label'|trans, entity.name) }}#}
+            {{ ui.renderProperty('tlt.organizationunit.workingschedule.min_hour.label'|trans, entity.minHour|date('H:i:s', 'UTC')) }}
+            {{ ui.renderProperty('tlt.organizationunit.workingschedule.max_hour.label'|trans, entity.maxHour|date('H:i:s', 'UTC')) }}
+
+            {{ entityConfig.renderDynamicFields(entity) }}
+        </div>
+    </div>
+</div>

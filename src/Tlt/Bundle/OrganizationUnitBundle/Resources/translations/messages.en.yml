@@ -105,6 +105,20 @@ tlt:
             max_hour.label: End To
             menu:
                 index.label: Working Schedules
+        guaranteedvalue:
+            entity_label: Guaranteed Value
+            entity_plural_label: Guaranteed Values
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            system.label: System
+            working_schedule.label: Working Schedule
+            value.label: Value
+            menu:
+                index.label: Guaranteed Values
+            form:
+                choose_system: Choose a System
+                choose_working_schedule: Choose a Working Schedule
 tlt_organization_unit:
     service_type:
         message.saved: Service Type saved
@@ -124,4 +138,5 @@ tlt_organization_unit:
         message.saved: Announcer saved
     working_schedule:
         message.saved: WorkingSchedule saved
-
+    guaranteed_value:
+        message.saved: GuaranteedValue saved

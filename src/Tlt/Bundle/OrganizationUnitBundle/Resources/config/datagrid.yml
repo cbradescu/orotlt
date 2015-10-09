@@ -664,3 +664,120 @@ datagrid:
         extends: base-working_schedule-grid
         filters:
             columns: ~
+    base-guaranteed_value-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_guaranteed_value_view
+            query:
+                select:
+                    - guaranteedValue.id
+                    - guaranteedValue.value
+                    - sys.name as system
+                    - ws.name as workingSchedule
+                    - st.name as serviceType
+                from:
+                    - 
+                        table: "%tlt_organization_unit_guaranteed_value.entity.class%"
+                        alias: guaranteedValue
+                join:
+                    left:
+                        -
+                            join: guaranteedValue.system
+                            alias: sys
+                        -
+                            join: guaranteedValue.workingSchedule
+                            alias: ws
+                        -
+                            join: sys.serviceType
+                            alias: st
+        columns:
+            serviceType:
+                label: tlt.organizationunit.servicetype.entity_label
+            system:
+                label: tlt.organizationunit.guaranteedvalue.system.label
+            workingSchedule:
+                label: tlt.organizationunit.guaranteedvalue.working_schedule.label
+            value:
+                frontend_type: percent
+                label: tlt.organizationunit.guaranteedvalue.value.label
+
+        sorters:
+            columns:
+                serviceType:
+                    data_name: st.name
+                system:
+                    data_name: sys.name
+                workingSchedule:
+                    data_name: ws.name
+                value:
+                    data_name: guaranteedValue.value
+            default:
+                serviceType: ASC
+                system: ASC
+                workingSchedule: ASC
+        filters:
+            columns:
+                serviceType:
+                    type: entity
+                    data_name: sys.serviceType
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_service_type.entity.class%"
+                    enabled: true
+                system:
+                    type: entity
+                    data_name: guaranteedValue.system
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_system.entity.class%"
+                    enabled: true
+                workingSchedule:
+                    type: entity
+                    data_name: guaranteedValue.workingSchedule
+                    options:
+                        field_options:
+                            class: "%tlt_organization_unit_working_schedule.entity.class%"
+                    enabled: true
+                value:
+                    type: percent
+                    data_name: guaranteedValue.value
+                    enabled: true
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_guaranteed_value_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_guaranteed_value_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_guaranteed_value_api_delete_guaranteed_value
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_guaranteed_value_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_guaranteed_value_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_guaranteed_value_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    guaranteed_value-grid:
+        extends: base-guaranteed_value-grid

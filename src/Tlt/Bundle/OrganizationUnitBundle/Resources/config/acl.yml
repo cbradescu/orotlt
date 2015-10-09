@@ -214,3 +214,27 @@ tlt_organization_unit_working_schedule_delete:
     permission: DELETE
     group_name: ""
     bindings: ~
+tlt_organization_unit_guaranteed_value_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:GuaranteedValue"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_guaranteed_value_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:GuaranteedValue"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_guaranteed_value_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:GuaranteedValue"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_guaranteed_value_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:GuaranteedValue"
+    permission: DELETE
+    group_name: ""
+    bindings: ~

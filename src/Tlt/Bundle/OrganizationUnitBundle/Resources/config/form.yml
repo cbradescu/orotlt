@@ -26,6 +26,9 @@ parameters:
     tlt_organization_unit_working_schedule.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\WorkingScheduleType"
     tlt_organization_unit_working_schedule.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\WorkingScheduleApiType"
     tlt_organization_unit_working_schedule.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\WorkingScheduleHandler"
+    tlt_organization_unit_guaranteed_value.form.type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\GuaranteedValueType"
+    tlt_organization_unit_guaranteed_value.form.type.entity.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Type\\GuaranteedValueApiType"
+    tlt_organization_unit_guaranteed_value.form.handler.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Form\\Handler\\GuaranteedValueHandler"
 services:
     tlt_organization_unit_service_type.form.type.entity:
         class: "%tlt_organization_unit_service_type.form.type.entity.class%"
@@ -432,3 +435,48 @@ services:
         arguments:
             - working_schedule
             - tlt_organization_unit_working_schedule_api
+    tlt_organization_unit_guaranteed_value.form.type.entity:
+        class: "%tlt_organization_unit_guaranteed_value.form.type.entity.class%"
+        arguments:
+            - "@router"
+            - "@oro_security.security_facade"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_guaranteed_value
+    tlt_organization_unit_guaranteed_value.form.handler.entity:
+        class: "%tlt_organization_unit_guaranteed_value.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_guaranteed_value.form.entity"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_guaranteed_value.form.entity:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - tlt_organization_unit_guaranteed_value_form
+            - tlt_organization_unit_guaranteed_value
+    tlt_organization_unit_guaranteed_value.form.type.entity.api:
+        class: "%tlt_organization_unit_guaranteed_value.form.type.entity.api.class%"
+        tags:
+            - 
+                name: form.type
+                alias: tlt_organization_unit_guaranteed_value_api
+    tlt_organization_unit_guaranteed_value.form.handler.entity.api:
+        class: "%tlt_organization_unit_guaranteed_value.form.handler.entity.class%"
+        scope: request
+        arguments:
+            - "@tlt_organization_unit_guaranteed_value.form.entity.api"
+            - "@request"
+            - "@doctrine.orm.entity_manager"
+            - "@event_dispatcher"
+    tlt_organization_unit_guaranteed_value.form.entity.api:
+        class: "Symfony\\Component\\Form\\Form"
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - guaranteed_value
+            - tlt_organization_unit_guaranteed_value_api

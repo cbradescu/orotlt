@@ -107,6 +107,18 @@ services:
             - "%tlt_organization_unit_working_schedule.entity.class%"
             - "@doctrine.orm.entity_manager"
             - "@tlt_organization_unit_working_schedule.manager"
+    tlt_organization_unit_guaranteed_value.manager:
+        class: "%tlt_organization_unit_guaranteed_value.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_guaranteed_value.manager.api:
+        class: "%tlt_organization_unit_guaranteed_value.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_guaranteed_value.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_guaranteed_value.manager"
 parameters:
     tlt_organization_unit_service_type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\ServiceType"
     tlt_organization_unit_service_type.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceTypeManager"
@@ -135,3 +147,6 @@ parameters:
     tlt_organization_unit_working_schedule.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\WorkingSchedule"
     tlt_organization_unit_working_schedule.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\WorkingScheduleManager"
     tlt_organization_unit_working_schedule.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\WorkingScheduleApiManager"
+    tlt_organization_unit_guaranteed_value.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\GuaranteedValue"
+    tlt_organization_unit_guaranteed_value.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\GuaranteedValueManager"
+    tlt_organization_unit_guaranteed_value.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\GuaranteedValueApiManager"

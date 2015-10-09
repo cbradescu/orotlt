@@ -1,0 +1,103 @@
+{% extends 'OroUIBundle:actions:view.html.twig' %}
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% import 'OroEntityConfigBundle::macros.html.twig' as entityConfig %}
+
+{% block stats %}
+{% endblock %}
+
+{% oro_title_set({params : {"%entity.name%": entity.name|default('N/A') }}) %}
+
+{% block navButtons %}
+    {% if resource_granted('EDIT', entity) %}
+        {{ UI.editButton({
+        'path' : path('tlt_organization_unit_guaranteed_value_update', { id: entity.id }),
+        'entity_label': 'tlt.organizationunit.guaranteedvalue.entity_label'|trans
+        }) }}
+    {% endif %}
+    {% if resource_granted('DELETE', entity) %}
+        {{ UI.deleteButton({
+        'dataUrl': path('tlt_organization_unit_guaranteed_value_api_delete_guaranteed_value', {'id': entity.id}),
+        'dataRedirect': path('tlt_organization_unit_guaranteed_value_index'),
+        'aCss': 'no-hash remove-button',
+        'id': 'btn-remove-user',
+        'dataId': entity.id,
+        'entity_label': 'tlt.organizationunit.guaranteedvalue.entity_label'|trans
+        }) }}
+    {% endif %}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+    'entity': entity,
+    'indexPath': path('tlt_organization_unit_guaranteed_value_index'),
+    'indexLabel': 'tlt.organizationunit.guaranteedvalue.entity_plural_label'|trans,
+    'entityTitle': entity.system ~ ' - ' ~ entity.workingSchedule
+    } %}
+
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {%- set guaranteedValueInformation -%}
+    <div class="row-fluid form-horizontal">
+        <div class="responsive-block">
+
+            {%- set workingScheduleData -%}
+                {%- if entity.workingSchedule -%}
+                    <span id="wkSchedule">
+                        <a href="{{ path('tlt_organization_unit_working_schedule_info', {'id': entity.workingSchedule.id}) }}">
+                            {{ entity.workingSchedule }}
+                        </a>
+                    </span>
+
+                    <script type="text/javascript">
+                        require(['jquery', 'routing', 'oro/dialog-widget'],
+                                function($, routing, DialogWidget) {
+                                    $('#wkSchedule').delegate('a', 'click', function(e) {
+                                        var $el = $(this);
+                                        e.stopImmediatePropagation();
+                                        e.preventDefault();
+                                        var widget = new DialogWidget({
+                                            'url': $el.attr('href'),
+                                            'title': $el.text(),
+                                            stateEnabled: false,
+                                            dialogOptions: {
+                                                width: 300,
+                                                allowMaximize: false,
+                                                allowMinimize: false,
+                                                modal: true,
+                                                maximizedHeightDecreaseBy: 'minimize-bar'
+                                            }
+                                        });
+                                        widget.render();
+                                    });
+                                });
+                    </script>
+                {%- endif -%}
+            {%- endset -%}
+
+            {{ UI.renderProperty('tlt.organizationunit.guaranteedvalue.system.label'|trans, entity.system) }}
+            {{ UI.renderHtmlProperty('tlt.organizationunit.guaranteedvalue.working_schedule.label'|trans, workingScheduleData) }}
+            {{ UI.renderProperty('tlt.organizationunit.guaranteedvalue.value.label'|trans, entity.value|oro_format_percent) }}
+        </div>
+        <div class="responsive-block">
+            {{ entityConfig.renderDynamicFields(entity) }}
+        </div>
+    </div>
+    {%- endset -%}
+    {% set dataBlocks = [
+    {
+    'title': 'tlt.organizationunit.guaranteedvalue.block.general'|trans,
+    'class': 'active',
+    'subblocks': [
+    {'data' : [guaranteedValueInformation]}
+    ]
+    }
+    ] %}
+
+
+    {% set id = 'guaranteedValueView' %}
+    {% set data = { 'dataBlocks': dataBlocks } %}
+
+    {{ parent() }}
+{% endblock content_data %}

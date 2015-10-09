@@ -89,4 +89,21 @@ class WorkingScheduleController extends Controller
             'form' => $this->get('tlt_organization_unit_working_schedule.form.entity')->createView()
         );
     }
+
+    /**
+     * @Route("/info/{id}", name="tlt_organization_unit_working_schedule_info", requirements={"id"="\d+"})
+     *
+     * @Template
+     * @AclAncestor("tlt_organization_unit_working_schedule_view")
+     */
+    public function infoAction(WorkingSchedule $workingSchedule)
+    {
+        if (!$this->getRequest()->get('_wid')) {
+            return $this->redirect($this->get('router')->generate('tlt_organization_unit_working_schedule_view', ['id' => $workingSchedule->getId()]));
+        }
+
+        return array(
+            'entity'  => $workingSchedule,
+        );
+    }    
 }

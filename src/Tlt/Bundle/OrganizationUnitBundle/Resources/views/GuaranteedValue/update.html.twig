@@ -1,0 +1,57 @@
+{% extends 'OroUIBundle:actions:update.html.twig' %}
+
+{% oro_title_set({params : {"%entity.name%": (entity.name is defined ? entity.name : null), "%entityName%": 'tlt.organizationunit.guaranteedvalue.entity_label'|trans }}) %}
+
+{% set entityId = entity.id %}
+{% set formAction = entityId ? path('tlt_organization_unit_guaranteed_value_update', { 'id': entityId}) : path('tlt_organization_unit_guaranteed_value_create') %}
+
+{% block navButtons %}
+    {% set html = UI.saveAndCloseButton() %}
+    {% if resource_granted('tlt_organization_unit_guaranteed_value_update') %}
+        {% set html = html ~ UI.saveAndStayButton() %}
+    {% endif %}
+    {{ UI.dropdownSaveButton({'html': html}) }}
+    {{ UI.cancelButton(path('tlt_organization_unit_guaranteed_value_index')) }}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% if entityId %}
+        {% set breadcrumbs = {
+        'entity': entity,
+        'indexPath': path('tlt_organization_unit_guaranteed_value_index'),
+        'indexLabel': 'tlt.organizationunit.guaranteedvalue.entity_plural_label'|trans,
+        'entityTitle': entity.system ~ ' - ' ~ entity.workingSchedule
+        } %}
+        {{ parent() }}
+    {% else %}
+        {% set title = 'oro.ui.create_entity'|trans({'%entityName%': 'tlt.organizationunit.guaranteedvalue.entity_label'|trans}) %}
+        {% include 'OroUIBundle::page_title_block.html.twig' with { title: title } %}
+    {% endif %}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {% set id = 'guaranteed_value-form' %}
+
+    {% set dataBlocks = [{
+    'title': 'tlt.organizationunit.guaranteedvalue.block.general'|trans,
+    'class': 'active',
+    'subblocks': [
+    {
+    'title': '',
+    'data': [
+    form_row(form.system),
+    form_row(form.workingSchedule),
+    form_row(form.value),
+
+    form.owner is defined ? form_row(form.owner) : '',
+    ]
+    }
+    ]
+    }] %}
+
+    {% set data = {
+    'formErrors': form_errors(form)? form_errors(form) : null,
+    'dataBlocks': dataBlocks,
+    } %}
+    {{ parent() }}
+{% endblock content_data %}
