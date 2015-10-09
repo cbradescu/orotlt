@@ -8,13 +8,9 @@
 
 namespace Tlt\Bundle\OrganizationUnitBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Oro\Bundle\DataAuditBundle\Metadata\Annotation as Oro;
-use Oro\Bundle\OrganizationBundle\Entity\BusinessUnit;
 use Oro\Bundle\OrganizationBundle\Entity\Organization;
-use Oro\Bundle\UserBundle\Entity\User;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\Config;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
 
@@ -66,6 +62,20 @@ class WorkingSchedule
     protected $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     * @ConfigField(
+     *      defaultValues={
+     *          "dataaudit"={
+     *              "auditable"=true
+     *          }
+     *      }
+     * )
+     */
+    protected $name;
+
+    /**
      * @var \time
      *
      * @ORM\Column(name="min_hour", type="time")
@@ -93,13 +103,12 @@ class WorkingSchedule
      */
     protected $maxHour;
 
-
     /**
      * @return string
      */
     public function __toString()
     {
-        //return (string)$this->name;
+        return (string)$this->name;
     }
 
     /**
@@ -127,6 +136,22 @@ class WorkingSchedule
     }
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return \time
      */
     public function getMinHour()
@@ -139,7 +164,7 @@ class WorkingSchedule
      */
     public function setMinHour($minHour)
     {
-//        $this->minHour = $minHour;
+        $this->minHour = $minHour;
     }
 
     /**
@@ -151,12 +176,10 @@ class WorkingSchedule
     }
 
     /**
-     * @param \DateTime $maxHour
+     * @param \time $maxHour
      */
     public function setMaxHour($maxHour)
     {
-        var_dump($maxHour);die();
-
         $this->maxHour = $maxHour;
     }
 }

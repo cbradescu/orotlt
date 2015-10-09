@@ -33,6 +33,7 @@
     {% set id = 'working_schedule-form' %}
 
     {% form_theme form.minHour with ["TltOrganizationUnitBundle:WorkingSchedule:Form/fields.html.twig"] %}
+    {% form_theme form.maxHour with ["TltOrganizationUnitBundle:WorkingSchedule:Form/fields.html.twig"] %}
 
     {% set dataBlocks = [{
     'title': 'tlt.organizationunit.workingschedule.block.general'|trans,
@@ -41,6 +42,7 @@
     {
     'title': '',
     'data': [
+    form_row(form.name),
     form_row(form.minHour),
     form_row(form.maxHour),
 
@@ -57,10 +59,24 @@
     {{ parent() }}
 
     <style type="text/css">
-        div.selector {
+        div[style].selector {
             display: inline-block;
-            width: 54px;
+            width: 44px !important;
         }
+
+        div.hm {
+            display: inline-block;
+            line-height: 28px;
+            height: 30px;
+            font-size: 12px;
+            padding: 0 5px;
+            vertical-align: top;
+        }
+
+        div[style].selector span {
+            width: 42px !important;
+        }
+
     </style>
 
 {% endblock content_data %}

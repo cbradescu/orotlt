@@ -29,21 +29,35 @@ class WorkingScheduleType extends AbstractType
     {
         $builder
             ->add(
+                'name',
+                'text',
+                [
+                    'label' => 'tlt.organizationunit.workingschedule.name.label',
+                    'required' => true
+                ]
+            )
+            ->add(
                 'minHour',
                 'time',
                 [
+                    'model_timezone' => 'UTC',
+                    'view_timezone' => 'UTC',
+                    'with_seconds' => true,
                     'widget' => 'choice',
                     'required' => true,
-                    'label'    => 'oro.calendar.calendarevent.start.label',
+                    'label'    => 'tlt.organizationunit.workingschedule.min_hour.label',
                 ]
             )
             ->add(
                 'maxHour',
-                'oro_datetime',
+                'time',
                 [
+                    'model_timezone' => 'UTC',
+                    'view_timezone' => 'UTC',
+                    'with_seconds' => true,
                     'widget' => 'choice',
                     'required' => true,
-                    'label'    => 'oro.calendar.calendarevent.end.label',
+                    'label'    => 'tlt.organizationunit.workingschedule.max_hour.label',
                 ]
             )
         ;

@@ -602,11 +602,22 @@ datagrid:
             query:
                 select:
                     - workingSchedule.id
+                    - workingSchedule.name
+                    - workingSchedule.minHour
+                    - workingSchedule.maxHour
                 from:
                     - 
                         table: "%tlt_organization_unit_working_schedule.entity.class%"
                         alias: workingSchedule
-        columns: ~
+        columns:
+            name:
+                label: tlt.organizationunit.workingschedule.name.label
+            minHour:
+                label: tlt.organizationunit.workingschedule.min_hour.label
+                frontend_type: time
+            maxHour:
+                label: tlt.organizationunit.workingschedule.max_hour.label
+                frontend_type: time
         sorters:
             columns: ~
             default: ~

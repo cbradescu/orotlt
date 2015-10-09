@@ -101,6 +101,8 @@ tlt:
             id.label: Id
             owner.label: Owner
             name.label: Name
+            min_hour.label: Start From
+            max_hour.label: End To
             menu:
                 index.label: Working Schedules
 tlt_organization_unit:

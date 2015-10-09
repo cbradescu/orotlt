@@ -35,8 +35,12 @@ class WorkingScheduleController extends Controller
      */
     public function viewAction(WorkingSchedule $workingSchedule)
     {
+        $locale = $this->get('oro_locale.settings');
+        $timeZone = $locale->getTimeZone();
+
         return [
-            'entity' => $workingSchedule
+            'entity' => $workingSchedule,
+            'timeZone' => $timeZone
         ];
     }
 

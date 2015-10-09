@@ -4,7 +4,7 @@
     {%- else -%}
         {%- set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} -%}
         <div {{ block('widget_container_attributes') }}>
-        {{ form_widget(form.hour, vars) }}{% if with_minutes %}:{{ form_widget(form.minute, vars) }}{% endif %}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
+        {{ form_widget(form.hour, vars) }}{% if with_minutes %}<div class="hm">:</div>{{ form_widget(form.minute, vars) }}{% endif %}{% if with_seconds %}<div class="hm">:</div>{{ form_widget(form.second, vars) }}{% endif %}
         </div>
     {%- endif -%}
 {%- endblock time_widget -%}
