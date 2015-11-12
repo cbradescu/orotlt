@@ -3,17 +3,17 @@
  * Created by orm-generator.
  * User: catalin
  * Date: 09/Oct/15
- * Time: 08:23
+ * Time: 10:24
  */
 
 namespace Tlt\Bundle\OrganizationUnitBundle\Model;
 
-use Tlt\Bundle\OrganizationUnitBundle\Entity\GuaranteedValue;
+use Tlt\Bundle\OrganizationUnitBundle\Entity\Equipment;
 use Doctrine\ORM\EntityManager;
 
 use Oro\Bundle\SecurityBundle\ORM\Walker\AclHelper;
 
-class GuaranteedValueManager
+class EquipmentManager
 {
     /**
      * @var EntityManager
@@ -38,18 +38,18 @@ class GuaranteedValueManager
     }
 
     /**
-     * @return GuaranteedValue
+     * @return Equipment
      */
-    public function createGuaranteedValue()
+    public function createEquipment()
     {
-        return $this->createGuaranteedValueObject();
+        return $this->createEquipmentObject();
     }
 
     /**
-     * @return GuaranteedValue
+     * @return Equipment
      */
-    protected function createGuaranteedValueObject()
+    protected function createEquipmentObject()
     {
-        return new GuaranteedValue();
+        return new Equipment();
     }
 }

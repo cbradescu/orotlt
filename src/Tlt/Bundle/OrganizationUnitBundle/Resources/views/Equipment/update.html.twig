@@ -1,0 +1,87 @@
+{% extends 'OroUIBundle:actions:update.html.twig' %}
+{% form_theme form with ['OroFormBundle:Form:fields.html.twig'] %}
+
+{% oro_title_set({params : {"%entity.name%": entity.name, "%entityName%": 'tlt.organizationunit.equipment.entity_label'|trans }}) %}
+
+{% set entityId = entity.id %}
+{% set formAction = entityId ? path('tlt_organization_unit_equipment_update', { 'id': entityId}) : path('tlt_organization_unit_equipment_create') %}
+
+{% block navButtons %}
+    {% set html = UI.saveAndCloseButton() %}
+    {% if resource_granted('tlt_organization_unit_equipment_update') %}
+        {% set html = html ~ UI.saveAndStayButton() %}
+    {% endif %}
+    {{ UI.dropdownSaveButton({'html': html}) }}
+    {{ UI.cancelButton(path('tlt_organization_unit_equipment_index')) }}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% if entityId %}
+        {% set breadcrumbs = {
+        'entity': entity,
+        'indexPath': path('tlt_organization_unit_equipment_index'),
+        'indexLabel': 'tlt.organizationunit.equipment.entity_plural_label'|trans,
+        'entityTitle': entity.name
+        } %}
+        {{ parent() }}
+    {% else %}
+        {% set title = 'oro.ui.create_entity'|trans({'%entityName%': 'tlt.organizationunit.equipment.entity_label'|trans}) %}
+        {% include 'OroUIBundle::page_title_block.html.twig' with { title: title } %}
+    {% endif %}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {% set id = 'equipment-form' %}
+
+    {% set dataBlocks = [{
+    'title': 'tlt.organizationunit.equipment.block.general'|trans,
+    'class': 'active',
+    'subblocks': [
+    {
+    'title': '',
+    'data': [
+    form.owner is defined ? form_row(form.owner) : '',
+    form_row(form.manufacturer),
+    form_row(form.model),
+    form_row(form.name),
+    form_row(form.quantity),
+    form_row(form.description),
+    ]
+    },
+    {
+    'title': '',
+    'data': [
+    form_row(form.serviceType),
+    form_row(form.service),
+    ]
+    }
+    ]
+    }] %}
+
+    {% set data = {
+    'formErrors': form_errors(form)? form_errors(form) : null,
+    'dataBlocks': dataBlocks,
+    } %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        require(['jquery', 'tltorganizationunit/js/service/view', 'tltorganizationunit/js/service/collection'],
+                function($, ServiceView, ServiceCollection){
+                    $(function() {
+                        /** @type tltorganizationunit.service.View */
+                        new ServiceView({
+                            el: $('#{{ form.serviceType.vars.id }}'),
+                            target: $('#{{ form.service.vars.id }}'),
+                            collection: new ServiceCollection()
+                        });
+                    });
+                });
+    </script>
+
+    <script type="text/template" id="service-chooser-template">
+        <% _.each(services, function(service, i) { %>
+        <option value="<%= service.get('id') %>"><%= service.get('name') %></option>
+        <% }); %>
+    </script>
+
+{% endblock content_data %}

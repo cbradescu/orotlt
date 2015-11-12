@@ -1,0 +1,71 @@
+{% extends 'OroUIBundle:actions:view.html.twig' %}
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% import 'OroEntityConfigBundle::macros.html.twig' as entityConfig %}
+
+{% block stats %}
+{% endblock %}
+
+{% oro_title_set({params : {"%entity.name%": entity.name|default('N/A') }}) %}
+
+{% block navButtons %}
+    {% if resource_granted('EDIT', entity) %}
+        {{ UI.editButton({
+        'path' : path('tlt_organization_unit_equipment_update', { id: entity.id }),
+        'entity_label': 'tlt.organizationunit.equipment.entity_label'|trans
+        }) }}
+    {% endif %}
+    {% if resource_granted('DELETE', entity) %}
+        {{ UI.deleteButton({
+        'dataUrl': path('tlt_organization_unit_equipment_api_delete_equipment', {'id': entity.id}),
+        'dataRedirect': path('tlt_organization_unit_equipment_index'),
+        'aCss': 'no-hash remove-button',
+        'id': 'btn-remove-user',
+        'dataId': entity.id,
+        'entity_label': 'tlt.organizationunit.equipment.entity_label'|trans
+        }) }}
+    {% endif %}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+    'entity': entity,
+    'indexPath': path('tlt_organization_unit_equipment_index'),
+    'indexLabel': 'tlt.organizationunit.equipment.entity_plural_label'|trans,
+    'entityTitle': entity.name
+    } %}
+
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {%- set equipmentInformation -%}
+    <div class="row-fluid form-horizontal">
+        <div class="responsive-block">
+            {{ UI.renderProperty('tlt.organizationunit.equipment.manufacturer.label'|trans, entity.manufacturer) }}
+            {{ UI.renderProperty('tlt.organizationunit.equipment.model.label'|trans, entity.model) }}
+            {{ UI.renderProperty('tlt.organizationunit.equipment.name.label'|trans, entity.name) }}
+            {{ UI.renderProperty('tlt.organizationunit.equipment.quantity.label'|trans, entity.quantity) }}
+            {{ UI.renderProperty('tlt.organizationunit.equipment.service.label'|trans, entity.service) }}
+            {{ UI.renderHtmlProperty('tlt.organizationunit.equipment.description.label'|trans, entity.description|escape|nl2br) }}
+        </div>
+        <div class="responsive-block">
+            {{ entityConfig.renderDynamicFields(entity) }}
+        </div>
+    </div>
+    {%- endset -%}
+    {% set dataBlocks = [
+    {
+    'title': 'tlt.organizationunit.equipment.block.general'|trans,
+    'class': 'active',
+    'subblocks': [
+    {'data' : [equipmentInformation]}
+    ]
+    }
+    ] %}
+
+
+    {% set id = 'equipmentView' %}
+    {% set data = { 'dataBlocks': dataBlocks } %}
+
+    {{ parent() }}
+{% endblock content_data %}

@@ -238,3 +238,27 @@ tlt_organization_unit_guaranteed_value_delete:
     permission: DELETE
     group_name: ""
     bindings: ~
+tlt_organization_unit_equipment_create:
+    type: entity
+    class: "TltOrganizationUnitBundle:Equipment"
+    permission: CREATE
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_equipment_view:
+    type: entity
+    class: "TltOrganizationUnitBundle:Equipment"
+    permission: VIEW
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_equipment_update:
+    type: entity
+    class: "TltOrganizationUnitBundle:Equipment"
+    permission: EDIT
+    group_name: ""
+    bindings: ~
+tlt_organization_unit_equipment_delete:
+    type: entity
+    class: "TltOrganizationUnitBundle:Equipment"
+    permission: DELETE
+    group_name: ""
+    bindings: ~

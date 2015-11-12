@@ -20,7 +20,7 @@
         'entity': entity,
         'indexPath': path('tlt_organization_unit_tlt_location_index'),
         'indexLabel': 'tlt.organizationunit.tltlocation.entity_plural_label'|trans,
-        'entityTitle': entity.tltEntity ~ ' - ' ~ entity.generalLocation
+        'entityTitle': entity.owner ~ ' - ' ~ entity.generalLocation
         } %}
         {{ parent() }}
     {% else %}
@@ -39,10 +39,9 @@
     {
     'title': '',
     'data': [
-    form_row(form.tltEntity),
     form_row(form.generalLocation),
 
-    form.owner is defined ? form_row(form.owner) : '',
+    form.owner is defined ? form_row(form.owner, { 'label': 'tlt.organizationunit.tltlocation.tlt_entity.label' }) : '',
     ]
     }
     ]

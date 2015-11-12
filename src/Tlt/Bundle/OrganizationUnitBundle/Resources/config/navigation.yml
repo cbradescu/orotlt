@@ -36,6 +36,9 @@ oro_menu_config:
         tlt_organization_unit_guaranteed_value_index:
             label: tlt.organizationunit.guaranteedvalue.menu.index.label
             route: tlt_organization_unit_guaranteed_value_index
+        tlt_organization_unit_equipment_index:
+            label: tlt.organizationunit.equipment.menu.index.label
+            route: tlt_organization_unit_equipment_index
     tree:
         application_menu:
             children:
@@ -51,3 +54,4 @@ oro_menu_config:
                         tlt_organization_unit_announcer_index: ~
                         tlt_organization_unit_working_schedule_index: ~
                         tlt_organization_unit_guaranteed_value_index: ~
+                        tlt_organization_unit_equipment_index: ~

@@ -3,12 +3,12 @@
  * Created by orm-generator.
  * User: catalin
  * Date: 09/Oct/15
- * Time: 08:23
+ * Time: 10:24
  */
 
 namespace Tlt\Bundle\OrganizationUnitBundle\Controller\Api\Rest;
 
-use Tlt\Bundle\OrganizationUnitBundle\Entity\GuaranteedValue;
+use Tlt\Bundle\OrganizationUnitBundle\Entity\Equipment;
 use Symfony\Component\HttpFoundation\Response;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -20,10 +20,10 @@ use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Oro\Bundle\SoapBundle\Controller\Api\Rest\RestController;
 
 /**
- * @Rest\RouteResource("guaranteed_value")
- * @Rest\NamePrefix("tlt_organization_unit_guaranteed_value_api_")
+ * @Rest\RouteResource("equipment")
+ * @Rest\NamePrefix("tlt_organization_unit_equipment_api_")
  */
-class GuaranteedValueController extends RestController implements ClassResourceInterface
+class EquipmentController extends RestController implements ClassResourceInterface
 {
     /**
      * REST GET list
@@ -41,10 +41,10 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      *     description="Number of items per page. defaults to 10."
      * )
      * @ApiDoc(
-     *     description="Get all GuaranteedValue items",
+     *     description="Get all Equipment items",
      *     resource=true
      * )
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_view")
+     * @AclAncestor("tlt_organization_unit_equipment_view")
      * @return Response
      */
     public function cgetAction()
@@ -61,10 +61,10 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      * @param string $id
      *
      * @ApiDoc(
-     *     description="Get GuaranteedValue item",
+     *     description="Get Equipment item",
      *     resource=true
      * )
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_view")
+     * @AclAncestor("tlt_organization_unit_equipment_view")
      * @return Response
      */
     public function getAction($id)
@@ -75,13 +75,13 @@ class GuaranteedValueController extends RestController implements ClassResourceI
     /**
      * REST PUT
      *
-     * @param int $id GuaranteedValue item id
+     * @param int $id Equipment item id
      *
      * @ApiDoc(
-     *     description="Update GuaranteedValue",
+     *     description="Update Equipment",
      *     resource=true
      * )
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_update")
+     * @AclAncestor("tlt_organization_unit_equipment_update")
      * @return Response
      */
     public function putAction($id)
@@ -90,13 +90,13 @@ class GuaranteedValueController extends RestController implements ClassResourceI
     }
 
     /**
-     * Create new guaranteed_value
+     * Create new equipment
      *
      * @ApiDoc(
-     *     description="Create new GuaranteedValue",
+     *     description="Create new Equipment",
      *     resource=true
      * )
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_create")
+     * @AclAncestor("tlt_organization_unit_equipment_create")
      */
     public function postAction()
     {
@@ -109,10 +109,10 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      * @param int $id
      *
      * @ApiDoc(
-     *     description="Delete GuaranteedValue",
+     *     description="Delete Equipment",
      *     resource=true
      * )
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_delete")
+     * @AclAncestor("tlt_organization_unit_equipment_delete")
      * @return Response
      */
     public function deleteAction($id)
@@ -125,7 +125,7 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      */
     public function getManager()
     {
-        return $this->get('tlt_organization_unit_guaranteed_value.manager.api');
+        return $this->get('tlt_organization_unit_equipment.manager.api');
     }
 
     /**
@@ -133,7 +133,7 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      */
     public function getForm()
     {
-        return $this->get('tlt_organization_unit_guaranteed_value.form.entity.api');
+        return $this->get('tlt_organization_unit_equipment.form.entity.api');
     }
 
     /**
@@ -141,7 +141,7 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      */
     public function getFormHandler()
     {
-        return $this->get('tlt_organization_unit_guaranteed_value.form.handler.entity.api');
+        return $this->get('tlt_organization_unit_equipment.form.handler.entity.api');
     }
 
     /**
@@ -162,7 +162,7 @@ class GuaranteedValueController extends RestController implements ClassResourceI
      */
     protected function fixFormData(array &$data, $entity)
     {
-        /** @var GuaranteedValue $entity */
+        /** @var Equipment $entity */
         parent::fixFormData($data, $entity);
 
         unset($data['id']);

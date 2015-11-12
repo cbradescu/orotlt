@@ -1,0 +1,5 @@
+config:
+    paths:
+        'tltorganizationunit/js/service/collection': 'bundles/tltorganizationunit/js/service/collection.js'
+        'tltorganizationunit/js/service/model': 'bundles/tltorganizationunit/js/service/model.js'
+        'tltorganizationunit/js/service/view': 'bundles/tltorganizationunit/js/service/view.js'

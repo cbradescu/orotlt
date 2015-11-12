@@ -3,7 +3,7 @@
  * Created by orm-generator.
  * User: catalin
  * Date: 09/Oct/15
- * Time: 08:23
+ * Time: 10:24
  */
 
 namespace Tlt\Bundle\OrganizationUnitBundle\Controller\Api\Soap;
@@ -13,15 +13,15 @@ use BeSimple\SoapBundle\ServiceDefinition\Annotation as Soap;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Oro\Bundle\SoapBundle\Controller\Api\Soap\SoapController;
 
-class GuaranteedValueController  extends SoapController
+class EquipmentController  extends SoapController
 {
     /**
-     * @Soap\Method("getGuaranteedValues")
+     * @Soap\Method("getEquipments")
      * @Soap\Param("page", phpType="int")
      * @Soap\Param("limit", phpType="int")
      * @Soap\Param("order", phpType="string")
-     * @Soap\Result(phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\GuaranteedValueSoap[]")
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_view")
+     * @Soap\Result(phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\EquipmentSoap[]")
+     * @AclAncestor("tlt_organization_unit_equipment_view")
      */
     public function cgetAction($page = 1, $limit = 10, $order = 'DESC')
     {
@@ -30,10 +30,10 @@ class GuaranteedValueController  extends SoapController
     }
 
     /**
-     * @Soap\Method("getguaranteed_value")
+     * @Soap\Method("getequipment")
      * @Soap\Param("id", phpType="int")
-     * @Soap\Result(phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\GuaranteedValueSoap")
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_view")
+     * @Soap\Result(phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\EquipmentSoap")
+     * @AclAncestor("tlt_organization_unit_equipment_view")
      */
     public function getAction($id)
     {
@@ -41,10 +41,10 @@ class GuaranteedValueController  extends SoapController
     }
 
     /**
-     * @Soap\Method("createGuaranteedValue")
-     * @Soap\Param("guaranteed_value", phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\GuaranteedValueSoap")
+     * @Soap\Method("createEquipment")
+     * @Soap\Param("equipment", phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\EquipmentSoap")
      * @Soap\Result(phpType="int")
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_create")
+     * @AclAncestor("tlt_organization_unit_equipment_create")
      */
     public function createAction()
     {
@@ -52,11 +52,11 @@ class GuaranteedValueController  extends SoapController
     }
 
     /**
-     * @Soap\Method("updateGuaranteedValue")
+     * @Soap\Method("updateEquipment")
      * @Soap\Param("id", phpType="int")
-     * @Soap\Param("guaranteed_value", phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\GuaranteedValueSoap")
+     * @Soap\Param("equipment", phpType="Tlt\Bundle\OrganizationUnitBundle\Entity\EquipmentSoap")
      * @Soap\Result(phpType="boolean")
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_update")
+     * @AclAncestor("tlt_organization_unit_equipment_update")
      */
     public function updateAction($id)
     {
@@ -64,10 +64,10 @@ class GuaranteedValueController  extends SoapController
     }
 
     /**
-     * @Soap\Method("deleteGuaranteedValue")
+     * @Soap\Method("deleteEquipment")
      * @Soap\Param("id", phpType="int")
      * @Soap\Result(phpType="boolean")
-     * @AclAncestor("tlt_organization_unit_guaranteed_value_delete")
+     * @AclAncestor("tlt_organization_unit_equipment_delete")
      */
     public function deleteAction($id)
     {
@@ -79,7 +79,7 @@ class GuaranteedValueController  extends SoapController
      */
     public function getManager()
     {
-        return $this->container->get('tlt_organization_unit_guaranteed_value.manager.api');
+        return $this->container->get('tlt_organization_unit_equipment.manager.api');
     }
 
     /**
@@ -87,7 +87,7 @@ class GuaranteedValueController  extends SoapController
      */
     public function getForm()
     {
-        return $this->container->get('tlt_organization_unit_guaranteed_value.form.entity.api');
+        return $this->container->get('tlt_organization_unit_equipment.form.entity.api');
     }
 
     /**
@@ -95,7 +95,7 @@ class GuaranteedValueController  extends SoapController
      */
     public function getFormHandler()
     {
-        return $this->container->get('tlt_organization_unit_guaranteed_value.form.handler.entity.api');
+        return $this->container->get('tlt_organization_unit_equipment.form.handler.entity.api');
     }
 
     /**

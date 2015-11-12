@@ -62,6 +62,13 @@ class WorkingSchedule
     protected $id;
 
     /**
+     * @var Organization
+     * @ORM\ManyToOne(targetEntity="Oro\Bundle\OrganizationBundle\Entity\Organization")
+     * @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $owner;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)

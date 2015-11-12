@@ -119,6 +119,25 @@ tlt:
             form:
                 choose_system: Choose a System
                 choose_working_schedule: Choose a Working Schedule
+        equipment:
+            entity_label: Equipment
+            entity_plural_label: Equipments
+            block.general: General
+            id.label: Id
+            owner.label: Owner
+            manufacturer.label: Manufacturer
+            model.label: Model
+            name.label: Name
+            quantity.label: Quantity
+            description.label: Description
+            service_type.label: Service Type
+            service.label: Service
+            menu:
+                index.label: Equipments
+            form:
+                choose_service_type: Choose a Service Type
+                choose_service: Choose a Service
+                choose_working_schedule: Choose a Working Schedule
 tlt_organization_unit:
     service_type:
         message.saved: Service Type saved
@@ -140,3 +159,8 @@ tlt_organization_unit:
         message.saved: WorkingSchedule saved
     guaranteed_value:
         message.saved: GuaranteedValue saved
+    equipment:
+        message.saved: Equipment saved
+oro:
+    user:
+        service_types.label:  Service Types

@@ -3,7 +3,7 @@
 {% set pageTitle = 'tlt.organizationunit.tltlocation.entity_plural_label'|trans %}
 {% set gridName = 'tlt_location-grid' %}
 {% block navButtons %}
-    {% if true or resource_granted('tlt_organization_unit_tlt_location_create') %}
+    {% if resource_granted('tlt_organization_unit_tlt_location_create') %}
         {{ UI.addButton({
             'path' : path('tlt_organization_unit_tlt_location_create'),
             'entity_label': 'tlt.organizationunit.tltlocation.entity_label'|trans

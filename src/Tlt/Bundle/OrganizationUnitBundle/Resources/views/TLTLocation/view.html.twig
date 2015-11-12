@@ -31,7 +31,7 @@
     'entity': entity,
     'indexPath': path('tlt_organization_unit_tlt_location_index'),
     'indexLabel': 'tlt.organizationunit.tltlocation.entity_plural_label'|trans,
-    'entityTitle': entity.tltEntity ~ ' - ' ~ entity.generalLocation
+    'entityTitle': entity.owner ~ ' - ' ~ entity.generalLocation
     } %}
 
     {{ parent() }}
@@ -41,7 +41,7 @@
     {%- set tltLocationInformation -%}
     <div class="row-fluid form-horizontal">
         <div class="responsive-block">
-            {{ UI.renderHtmlProperty('tlt.organizationunit.tltlocation.tlt_entity.label'|trans, entity.tltEntity) }}
+            {#{{ UI.renderHtmlProperty('tlt.organizationunit.tltlocation.tlt_entity.label'|trans, entity.tltEntity) }}#}
             {{ UI.renderHtmlProperty('tlt.organizationunit.tltlocation.general_location.label'|trans, entity.generalLocation) }}
         </div>
         <div class="responsive-block">

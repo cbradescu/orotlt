@@ -119,6 +119,24 @@ services:
             - "%tlt_organization_unit_guaranteed_value.entity.class%"
             - "@doctrine.orm.entity_manager"
             - "@tlt_organization_unit_guaranteed_value.manager"
+    tlt_organization_unit_equipment.manager:
+        class: "%tlt_organization_unit_equipment.manager.class%"
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@oro_security.acl_helper"
+    tlt_organization_unit_equipment.manager.api:
+        class: "%tlt_organization_unit_equipment.manager.api.class%"
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - "%tlt_organization_unit_equipment.entity.class%"
+            - "@doctrine.orm.entity_manager"
+            - "@tlt_organization_unit_equipment.manager"
+
+    tlt_organization_unit_user.form.extension:
+        class: %tlt_organization_unit_user.form.extension.class%
+        tags:
+            - { name: form.type_extension, alias: oro_user_user }
+
 parameters:
     tlt_organization_unit_service_type.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\ServiceType"
     tlt_organization_unit_service_type.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\ServiceTypeManager"
@@ -150,3 +168,7 @@ parameters:
     tlt_organization_unit_guaranteed_value.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\GuaranteedValue"
     tlt_organization_unit_guaranteed_value.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\GuaranteedValueManager"
     tlt_organization_unit_guaranteed_value.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\GuaranteedValueApiManager"
+    tlt_organization_unit_equipment.entity.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\Equipment"
+    tlt_organization_unit_equipment.manager.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\EquipmentManager"
+    tlt_organization_unit_equipment.manager.api.class: "Tlt\\Bundle\\OrganizationUnitBundle\\Model\\EquipmentApiManager"
+    tlt_organization_unit_user.form.extension.class: Tlt\Bundle\OrganizationUnitBundle\Form\Extension\UserFormExtension

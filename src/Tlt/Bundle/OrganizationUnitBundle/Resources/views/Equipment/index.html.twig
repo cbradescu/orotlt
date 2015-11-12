@@ -1,0 +1,12 @@
+{% extends 'OroUIBundle:actions:index.html.twig' %}
+{% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
+{% set pageTitle = 'tlt.organizationunit.equipment.entity_plural_label'|trans %}
+{% set gridName = 'equipment-grid' %}
+{% block navButtons %}
+    {% if resource_granted('tlt_organization_unit_equipment_create') %}
+        {{ UI.addButton({
+            'path' : path('tlt_organization_unit_equipment_create'),
+            'entity_label': 'tlt.organizationunit.equipment.entity_label'|trans
+        }) }}
+    {% endif %}
+{% endblock %}

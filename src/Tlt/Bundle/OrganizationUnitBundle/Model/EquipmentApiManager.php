@@ -3,7 +3,7 @@
  * Created by orm-generator.
  * User: catalin
  * Date: 09/Oct/15
- * Time: 08:23
+ * Time: 10:24
  */
 
 namespace Tlt\Bundle\OrganizationUnitBundle\Model;
@@ -12,23 +12,23 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Oro\Bundle\SoapBundle\Entity\Manager\ApiEntityManager;
 
-class GuaranteedValueApiManager extends ApiEntityManager
+class EquipmentApiManager extends ApiEntityManager
 {
     /**
-     * @var GuaranteedValueManager
+     * @var EquipmentManager
      */
-    protected $guaranteedValueManager;
+    protected $equipmentManager;
 
     /**
      * Constructor
      *
      * @param string $class Entity name
      * @param ObjectManager $om Object manager
-     * @param GuaranteedValueManager $guaranteedValueManager
+     * @param EquipmentManager $equipmentManager
      */
-    public function __construct($class, ObjectManager $om, GuaranteedValueManager $guaranteedValueManager)
+    public function __construct($class, ObjectManager $om, EquipmentManager $equipmentManager)
     {
-        $this->guaranteedValueManager = $guaranteedValueManager;
+        $this->equipmentManager = $equipmentManager;
         parent::__construct($class, $om);
     }
 
@@ -37,6 +37,6 @@ class GuaranteedValueApiManager extends ApiEntityManager
      */
     public function createEntity()
     {
-        return $this->guaranteedValueManager->createGuaranteedValue();
+        return $this->equipmentManager->createEquipment();
     }
 }

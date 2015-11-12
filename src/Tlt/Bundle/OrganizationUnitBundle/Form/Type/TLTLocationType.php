@@ -28,17 +28,17 @@ class TLTLocationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'tltEntity',
-                'entity',
-                array(
-                    'label'       => 'tlt.organizationunit.tltlocation.tlt_entity.label',
-                    'class'       => 'TltOrganizationUnitBundle:TLTEntity',
-                    'property'    => 'name',
-                    'empty_value' => 'tlt.organizationunit.tltlocation.form.choose_tlt_entity',
-                    'required'    => true
-                )
-            )
+//            ->add(
+//                'tltEntity',
+//                'entity',
+//                array(
+//                    'label'       => 'tlt.organizationunit.tltlocation.tlt_entity.label',
+//                    'class'       => 'TltOrganizationUnitBundle:TLTEntity',
+//                    'property'    => 'name',
+//                    'empty_value' => 'tlt.organizationunit.tltlocation.form.choose_tlt_entity',
+//                    'required'    => true
+//                )
+//            )
             ->add(
                 'generalLocation',
                 'entity',
@@ -63,7 +63,7 @@ class TLTLocationType extends AbstractType
                 'data_class' => 'Tlt\\Bundle\\OrganizationUnitBundle\\Entity\\TLTLocation',
                 'intention' => 'tlt_organization_unit_tlt_location_entity',
                 'cascade_validation' => true,
-                'ownership_disabled' => true
+                'ownership_disabled' => false
             ]
         );
     }

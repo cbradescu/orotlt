@@ -3,7 +3,7 @@
  * Created by orm-generator.
  * User: catalin
  * Date: 09/Oct/15
- * Time: 08:23
+ * Time: 10:24
  */
 
 namespace Tlt\Bundle\OrganizationUnitBundle\Form\Handler;
@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Oro\Bundle\SoapBundle\Form\Handler\ApiFormHandler;
 
-class GuaranteedValueHandler extends ApiFormHandler
+class EquipmentHandler extends ApiFormHandler
 {
     /**
      * @var EventDispatcherInterface

@@ -334,43 +334,56 @@ datagrid:
             query:
                 select:
                     - tltLocation.id
-                    - tlt_entity.name as tltEntity
+#                    - tlt_entity.name as tltEntity
                     - general_location.name as generalLocation
+                    - bu.name as businessUnit
                 from:
                     - 
                         table: "%tlt_organization_unit_tlt_location.entity.class%"
                         alias: tltLocation
                 join:
                     left:
-                        - 
-                            join: tltLocation.tltEntity
-                            alias: tlt_entity
-                        - 
+#                        -
+#                            join: tltLocation.tltEntity
+#                            alias: tlt_entity
+                        -
                             join: tltLocation.generalLocation
                             alias: general_location
+                        -
+                            join: tltLocation.owner
+                            alias: bu
         columns:
-            tltEntity:
-                label: tlt.organizationunit.tltlocation.tlt_entity.label
+#            tltEntity:
+#                label: tlt.organizationunit.tltlocation.tlt_entity.label
             generalLocation:
                 label: tlt.organizationunit.tltlocation.general_location.label
+            businessUnit:
+                label: tlt.organizationunit.tltlocation.tlt_entity.label
         sorters:
             columns: ~
             default: ~
         filters:
             columns:
-                tltEntity:
-                    type: entity
-                    data_name: tltLocation.tltEntity
-                    options:
-                        field_options:
-                            class: "%tlt_organization_unit_tlt_entity.entity.class%"
-                    enabled: true
+#                tltEntity:
+#                    type: entity
+#                    data_name: tltLocation.tltEntity
+#                    options:
+#                        field_options:
+#                            class: "%tlt_organization_unit_tlt_entity.entity.class%"
+#                    enabled: true
                 generalLocation:
                     type: entity
                     data_name: tltLocation.generalLocation
                     options:
                         field_options:
                             class: "%tlt_organization_unit_general_location.entity.class%"
+                    enabled: true
+                businessUnit:
+                    type: entity
+                    data_name: tltLocation.owner
+                    options:
+                        field_options:
+                            class: "%oro_organization.business_unit.entity.class%"
                     enabled: true
         properties:
             id: ~
@@ -681,13 +694,13 @@ datagrid:
                         alias: guaranteedValue
                 join:
                     left:
-                        -
+                        - 
                             join: guaranteedValue.system
                             alias: sys
-                        -
+                        - 
                             join: guaranteedValue.workingSchedule
                             alias: ws
-                        -
+                        - 
                             join: sys.serviceType
                             alias: st
         columns:
@@ -700,7 +713,6 @@ datagrid:
             value:
                 frontend_type: percent
                 label: tlt.organizationunit.guaranteedvalue.value.label
-
         sorters:
             columns:
                 serviceType:
@@ -781,3 +793,81 @@ datagrid:
                 link: delete_link
     guaranteed_value-grid:
         extends: base-guaranteed_value-grid
+    base-equipment-grid:
+        source:
+            type: orm
+            acl_resource: tlt_organization_unit_equipment_view
+            query:
+                select:
+                    - equipment.id
+                    - equipment.name
+                    - equipment.quantity
+                    - equipment.model
+                    - equipment.manufacturer
+                    - sv.name as serviceName
+                from:
+                    - 
+                        table: "%tlt_organization_unit_equipment.entity.class%"
+                        alias: equipment
+                join:
+                    left:
+                        -
+                            join: equipment.service
+                            alias: sv
+        columns:
+            name:
+                label: tlt.organizationunit.equipment.name.label
+            quantity:
+                label: tlt.organizationunit.equipment.quantity.label
+            model:
+                label: tlt.organizationunit.equipment.model.label
+            manufacturer:
+                label: tlt.organizationunit.equipment.manufacturer.label
+            serviceName:
+                label: tlt.organizationunit.equipment.service.label
+        sorters:
+            columns: ~
+            default: ~
+        filters:
+            columns: ~
+        properties:
+            id: ~
+            view_link:
+                type: url
+                route: tlt_organization_unit_equipment_view
+                params:
+                    - id
+            update_link:
+                type: url
+                route: tlt_organization_unit_equipment_update
+                params:
+                    - id
+            delete_link:
+                type: url
+                route: tlt_organization_unit_equipment_api_delete_equipment
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                acl_resource: tlt_organization_unit_equipment_view
+                label: oro.grid.action.view
+                icon: eye-open
+                link: view_link
+                rowAction: true
+            update:
+                type: navigate
+                acl_resource: tlt_organization_unit_equipment_update
+                label: oro.grid.action.update
+                icon: edit
+                link: update_link
+            delete:
+                type: delete
+                acl_resource: tlt_organization_unit_equipment_delete
+                label: oro.grid.action.delete
+                icon: trash
+                link: delete_link
+    equipment-grid:
+        extends: base-equipment-grid
+        filters:
+            columns: ~

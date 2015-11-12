@@ -36,9 +36,11 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *              "icon"="icon-list-alt"
  *          },
  *          "ownership"={
- *              "owner_type"="ORGANIZATION",
+ *              "owner_type"="BUSINESS_UNIT",
  *              "owner_field_name"="owner",
- *              "owner_column_name"="organization_id",
+ *              "owner_column_name"="business_unit_owner_id",
+ *              "organization_field_name"="organization",
+ *              "organization_column_name"="organization_id"
  *          },
  *          "security"={
  *              "type"="ACL"
@@ -67,26 +69,40 @@ class TLTLocation
     protected $id;
 
     /**
-     * @var Organization
-     * @ORM\ManyToOne(targetEntity="Oro\Bundle\OrganizationBundle\Entity\Organization")
-     * @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    protected $owner;
-
-    /**
-     * @var TLTEntity
-     *
-     * @ORM\ManyToOne(targetEntity="Tlt\Bundle\OrganizationUnitBundle\Entity\TLTEntity")
-     * @ORM\JoinColumn(name="tlt_entity_id", referencedColumnName="id", onDelete="SET NULL")
+     * @var BusinessUnit
+     * @ORM\ManyToOne(targetEntity="Oro\Bundle\OrganizationBundle\Entity\BusinessUnit", cascade={"persist"})
+     * @ORM\JoinColumn(name="business_unit_owner_id", referencedColumnName="id", onDelete="SET NULL")
      * @ConfigField(
      *      defaultValues={
-     *          "dataaudit"={
-     *              "auditable"=true
+     *          "importexport"={
+     *              "excluded"=true
      *          }
      *      }
      * )
      */
-    protected $tltEntity;
+    protected $owner;
+
+    /**
+     * @var Organization
+     * @ORM\ManyToOne(targetEntity="Oro\Bundle\OrganizationBundle\Entity\Organization")
+     * @ORM\JoinColumn(name="organization_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $organization;
+
+//    /**
+//     * @var TLTEntity
+//     *
+//     * @ORM\ManyToOne(targetEntity="Tlt\Bundle\OrganizationUnitBundle\Entity\TLTEntity")
+//     * @ORM\JoinColumn(name="tlt_entity_id", referencedColumnName="id", onDelete="SET NULL")
+//     * @ConfigField(
+//     *      defaultValues={
+//     *          "dataaudit"={
+//     *              "auditable"=true
+//     *          }
+//     *      }
+//     * )
+//     */
+//    protected $tltEntity;
 
     /**
      * @var GeneralLocation
@@ -121,15 +137,15 @@ class TLTLocation
     }
 
     /**
-     * @param Organization $organization
+     * @param BusinessUnit $owningBusinessUnit
      */
-    public function setOwner($organization)
+    public function setOwner($owningBusinessUnit)
     {
-        $this->owner = $organization;
+        $this->owner = $owningBusinessUnit;
     }
 
     /**
-     * @return Organization
+     * @return BusinessUnit
      */
     public function getOwner()
     {
@@ -137,20 +153,36 @@ class TLTLocation
     }
 
     /**
-     * @return TLTEntity
+     * @param Organization $organization
      */
-    public function getTltEntity()
+    public function setOrganization($organization)
     {
-        return $this->tltEntity;
+        $this->organization = $organization;
     }
 
     /**
-     * @param TLTEntity $tltEntity
+     * @return Organization
      */
-    public function setTltEntity($tltEntity)
+    public function getOrganization()
     {
-        $this->tltEntity = $tltEntity;
+        return $this->organization;
     }
+
+//    /**
+//     * @return TLTEntity
+//     */
+//    public function getTltEntity()
+//    {
+//        return $this->tltEntity;
+//    }
+//
+//    /**
+//     * @param TLTEntity $tltEntity
+//     */
+//    public function setTltEntity($tltEntity)
+//    {
+//        $this->tltEntity = $tltEntity;
+//    }
 
     /**
      * @return GeneralLocation

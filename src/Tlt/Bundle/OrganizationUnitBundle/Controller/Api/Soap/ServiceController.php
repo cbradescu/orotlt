@@ -112,4 +112,20 @@ class ServiceController  extends SoapController
         return true;
     }
 
+    /**
+     * @Soap\Method("getServiceByServiceType")
+     * @Soap\Param("serviceType", phpType = "string")
+     * @Soap\Result(phpType = "Tlt\Bundle\OrganizationUnitBundle\Entity\Service[]")
+     */
+    public function getByServiceTypeAction($serviceType)
+    {
+        $serviceType = $this->getManager()->getRepository('TltOrganizationUnitBundle:ServiceType')->find($serviceType);
+
+        if (!$serviceType) {
+            throw new \SoapFault('NOT_FOUND', sprintf('Country with code "%s" can not be found', $serviceType));
+        }
+
+        return $this->transformToSoapEntities($this->getRepository()->getServiceTypeServices($serviceType));
+    }
+
 }
