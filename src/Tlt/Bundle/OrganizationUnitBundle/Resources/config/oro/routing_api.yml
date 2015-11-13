@@ -34,3 +34,6 @@ tlt_organization_unit_guaranteed_value_api:
 tlt_organization_unit_equipment_api:
     resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/EquipmentController.php"
     type: rest
+tlt_organization_unit_business_unit_tlt_locations_api:
+    resource: "@TltOrganizationUnitBundle/Controller/Api/Rest/BusinessUnitTLTLocationsController.php"
+    type: rest

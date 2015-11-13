@@ -23,6 +23,7 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  * @ORM\Table(
  *      name="tlt_organization_unit_tlt_location"
  * )
+ * @ORM\Entity(repositoryClass="Tlt\Bundle\OrganizationUnitBundle\Entity\Repository\TLTLocationRepository")
  * @ORM\HasLifecycleCallbacks()
  * @Oro\Loggable
  * @Config(

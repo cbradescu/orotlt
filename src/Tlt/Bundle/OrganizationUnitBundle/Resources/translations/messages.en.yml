@@ -132,6 +132,7 @@ tlt:
             description.label: Description
             service_type.label: Service Type
             service.label: Service
+            tlt_location.label: TLT Location
             menu:
                 index.label: Equipments
             form:

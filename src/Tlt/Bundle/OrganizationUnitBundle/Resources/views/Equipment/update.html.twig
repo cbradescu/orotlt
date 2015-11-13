@@ -53,6 +53,7 @@
     'data': [
     form_row(form.serviceType),
     form_row(form.service),
+    form_row(form.tltLocation),
     ]
     }
     ]
@@ -76,11 +77,28 @@
                         });
                     });
                 });
+        require(['jquery', 'tltorganizationunit/js/tltLocation/view', 'tltorganizationunit/js/tltLocation/collection'],
+                function($, TltLocationView, TltLocationCollection){
+                    $(function() {
+                        /** @type tltorganizationunit.tltLocation.View */
+                        new TltLocationView({
+                            el: $('#{{ form.owner.vars.id }}'),
+                            target: $('#{{ form.tltLocation.vars.id }}'),
+                            collection: new TltLocationCollection()
+                        });
+                    });
+                });
     </script>
 
     <script type="text/template" id="service-chooser-template">
         <% _.each(services, function(service, i) { %>
         <option value="<%= service.get('id') %>"><%= service.get('name') %></option>
+        <% }); %>
+    </script>
+
+    <script type="text/template" id="tltLocation-chooser-template">
+        <% _.each(tltLocations, function(tltLocation, i) { %>
+        <option value="<%= tltLocation.get('id') %>"><%= tltLocation.get('generalLocation') %></option>
         <% }); %>
     </script>
 

@@ -33,9 +33,9 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *              "icon"="icon-list-alt"
  *          },
  *          "ownership"={
- *              "owner_type"="USER",
+ *              "owner_type"="BUSINESS_UNIT",
  *              "owner_field_name"="owner",
- *              "owner_column_name"="owner_id",
+ *              "owner_column_name"="business_unit_owner_id",
  *              "organization_field_name"="organization",
  *              "organization_column_name"="organization_id"
  *          },
@@ -153,6 +153,21 @@ class Equipment
      * )
      */
     protected $service;
+
+    /**
+     * @var tltLocation
+     *
+     * @ORM\ManyToOne(targetEntity="Tlt\Bundle\OrganizationUnitBundle\Entity\TLTLocation")
+     * @ORM\JoinColumn(name="tlt_location_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ConfigField(
+     *      defaultValues={
+     *          "dataaudit"={
+     *              "auditable"=true
+     *          }
+     *      }
+     * )
+     */
+    protected $tltLocation;
 
     /**
      * @var BusinessUnit
@@ -361,6 +376,22 @@ class Equipment
     public function setService($service)
     {
         $this->service = $service;
+    }
+
+    /**
+     * @return tltLocation
+     */
+    public function getTltLocation()
+    {
+        return $this->tltLocation;
+    }
+
+    /**
+     * @param tltLocation $tltLocation
+     */
+    public function setTltLocation($tltLocation)
+    {
+        $this->tltLocation = $tltLocation;
     }
 
     /**

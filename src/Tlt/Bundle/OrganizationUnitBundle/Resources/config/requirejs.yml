@@ -3,3 +3,7 @@ config:
         'tltorganizationunit/js/service/collection': 'bundles/tltorganizationunit/js/service/collection.js'
         'tltorganizationunit/js/service/model': 'bundles/tltorganizationunit/js/service/model.js'
         'tltorganizationunit/js/service/view': 'bundles/tltorganizationunit/js/service/view.js'
+
+        'tltorganizationunit/js/tltLocation/collection': 'bundles/tltorganizationunit/js/tltLocation/collection.js'
+        'tltorganizationunit/js/tltLocation/model': 'bundles/tltorganizationunit/js/tltLocation/model.js'
+        'tltorganizationunit/js/tltLocation/view': 'bundles/tltorganizationunit/js/tltLocation/view.js'

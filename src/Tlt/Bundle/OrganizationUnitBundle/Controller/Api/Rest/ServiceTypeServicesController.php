@@ -15,9 +15,8 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 
-use Oro\Bundle\AddressBundle\Entity\Country;
-use Oro\Bundle\AddressBundle\Entity\Repository\RegionRepository;
 use Tlt\Bundle\OrganizationUnitBundle\Entity\ServiceType;
+use Tlt\Bundle\OrganizationUnitBundle\Entity\Repository\ServiceRepository;
 
 /**
  * @RouteResource("services")

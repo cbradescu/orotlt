@@ -122,12 +122,18 @@ class EquipmentType extends AbstractType
         }
 
         $accessor = PropertyAccess::createPropertyAccessor();
+
+        // Service field
         $service = $accessor->getValue($data, 'service');
-//        $serviceType = ($service) ? $service->getServiceType() : $this->tokenStorage->getToken()->getUser()->getServiceTypes()->first();
         $serviceTypeId = ($service) ? $service->getServiceType()->getId() : null;
 
         $this->addServiceForm($form, $serviceTypeId);
 
+        // TLTLocation field
+        $businessUnit = $accessor->getValue($data, 'owner');
+        $businessUnitId = ($businessUnit) ? $businessUnit->getId() : null;
+
+        $this->addTltLocationForm($form, $businessUnitId);
     }
 
     public function preSubmit(FormEvent $event)
@@ -137,6 +143,9 @@ class EquipmentType extends AbstractType
 
         $serviceTypeId = array_key_exists('serviceType', $data) ? $data['serviceType'] : null;
         $this->addServiceForm($form, $serviceTypeId);
+
+        $businessUnitId =  array_key_exists('owner', $data) ? $data['owner'] : null;
+        $this->addTltLocationForm($form, $businessUnitId);
     }
 
     private function addServiceForm(FormInterface $form, $serviceTypeId = null)
@@ -160,6 +169,28 @@ class EquipmentType extends AbstractType
 
         $form->add(
             'service',
+            'entity',
+            $formOptions
+        );
+    }
+
+    private function addTltLocationForm(FormInterface $form, $businessUnitId = null)
+    {
+        $formOptions = array(
+            'label' => 'tlt.organizationunit.equipment.tlt_location.label',
+            'class' => 'TltOrganizationUnitBundle:TLTLocation',
+            'property' => 'generalLocation',
+            'empty_value' => 'Choose a TLT Location',
+            'query_builder' => function (EntityRepository $er) use ($businessUnitId){
+                return $er->createQueryBuilder('tl')
+                    ->where('tl.owner =:userBusinessUnit')
+                    ->setParameter('userBusinessUnit', ($businessUnitId) ? $businessUnitId : $this->tokenStorage->getToken()->getUser()->getOwner());
+            },
+            'required' => true
+        );
+
+        $form->add(
+            'tltLocation',
             'entity',
             $formOptions
         );
